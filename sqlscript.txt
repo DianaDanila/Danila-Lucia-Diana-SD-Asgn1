@@ -1,0 +1,115 @@
+assume assignment1 creted:
+
+
+CREATE TABLE `assignment1`.`games` (
+  `idgames` INT NOT NULL AUTO_INCREMENT,
+  `scorep1` INT NOT NULL,
+  `scorep2` INT NOT NULL,
+  `idm` INT NOT NULL,
+  `idw` INT NULL,
+  PRIMARY KEY (`idgames`));
+
+
+  
+CREATE TABLE `assignment1`.`users` (
+  `idusers` INT NOT NULL AUTO_INCREMENT,
+  `user` VARCHAR(45) NOT NULL,
+  `mail` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `admin` TINYINT NOT NULL,
+  PRIMARY KEY (`idusers`));
+
+
+  
+CREATE TABLE `assignment1`.`tournaments` (
+  `idtournament` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `status` VARCHAR(45) NOT NULL,
+  `winner` INT NULL DEFAULT 0,
+  PRIMARY KEY (`idtournament`));
+
+  
+CREATE TABLE `assignment1`.`matches` (
+  `idmatch` INT NOT NULL AUTO_INCREMENT,
+  `idp1` INT NOT NULL,
+  `idp2` INT NOT NULL,
+  `idt` INT NOT NULL,
+  `idw` INT NULL DEFAULT 0,
+  PRIMARY KEY (`idmatch`));
+
+  
+  //m-p1,m-p2,m-t
+  ALTER TABLE `assignment1`.`matches` 
+ADD INDEX `player1_idx` (`idp1` ASC),
+ADD INDEX `player2_idx` (`idp2` ASC),
+ADD INDEX `tournament_idx` (`idt` ASC);
+ALTER TABLE `assignment1`.`matches` 
+ADD CONSTRAINT `player1`
+  FOREIGN KEY (`idp1`)
+  REFERENCES `assignment1`.`users` (`idusers`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `player2`
+  FOREIGN KEY (`idp2`)
+  REFERENCES `assignment1`.`users` (`idusers`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `tournament`
+  FOREIGN KEY (`idt`)
+  REFERENCES `assignment1`.`tournaments` (`idtournament`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+  
+  
+  ALTER TABLE `assignment1`.`games` 
+ADD INDEX `match_idx` (`idm` ASC);
+ALTER TABLE `assignment1`.`games` 
+ADD CONSTRAINT `match`
+  FOREIGN KEY (`idm`)
+  REFERENCES `assignment1`.`matches` (`idmatch`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+  
+  
+  
+  
+
+
+
+
+
+
+  
+  INSERT INTO `assignment1`.`users` (`idusers`, `user`, `mail`, `password`, `admin`) VALUES ('1', 'Diana', 'lucia_diana1995@yahoo.com', '123', '0');
+INSERT INTO `assignment1`.`users` (`idusers`, `user`, `mail`, `password`, `admin`) VALUES ('2', 'Radu', 'radu@email.com', '456', '0');
+
+
+INSERT INTO `assignment1`.`tournaments` (`idtournament`, `name`, `status`) VALUES ('1', 'World Championship', 'playing');
+
+INSERT INTO `assignment1`.`matches` (`idmatch`, `idp1`, `idp2`, `idt`) VALUES ('1', '1', '2', '1');
+
+
+INSERT INTO `assignment1`.`games` (`idgame`, `scorep1`, `scorep2`, `idm`) VALUES ('1', '10', '5', '1');
+
+
+INSERT INTO `assignment1`.`users` (`idusers`, `user`, `mail`, `password`, `admin`) VALUES ('3', 'Peti', 'peti@email.com', '789', '0');
+INSERT INTO `assignment1`.`users` (`idusers`, `user`, `mail`, `password`, `admin`) VALUES ('4', 'Dan', 'dan@email.com', '123', '0');
+INSERT INTO `assignment1`.`users` (`idusers`, `user`, `mail`, `password`, `admin`) VALUES ('5', 'Adi', 'adi@email.com', '456', '0');
+INSERT INTO `assignment1`.`users` (`idusers`, `user`, `mail`, `password`, `admin`) VALUES ('6', 'Cedra', 'cedra@email.com', '789', '0');
+INSERT INTO `assignment1`.`users` (`idusers`, `user`, `mail`, `password`, `admin`) VALUES ('7', 'Ciubo', 'ciubo@email.com', '123', '0');
+INSERT INTO `assignment1`.`users` (`idusers`, `user`, `mail`, `password`, `admin`) VALUES ('8', 'Ana', 'ana@email.com', '456', '0');
+
+
+INSERT INTO `assignment1`.`matches` (`idmatch`, `idp1`, `idp2`, `idt`, `idw`) VALUES ('2', '3', '4', '1', '4');
+INSERT INTO `assignment1`.`matches` (`idmatch`, `idp1`, `idp2`, `idt`, `idw`) VALUES ('3', '5', '6', '1', '5');
+INSERT INTO `assignment1`.`matches` (`idmatch`, `idp1`, `idp2`, `idt`, `idw`) VALUES ('4', '7', '8', '1', '8');
+INSERT INTO `assignment1`.`matches` (`idmatch`, `idp1`, `idp2`, `idt`, `idw`) VALUES ('5', '1', '4', '1', '1');
+INSERT INTO `assignment1`.`matches` (`idmatch`, `idp1`, `idp2`, `idt`, `idw`) VALUES ('6', '5', '8', '1', '8');
+INSERT INTO `assignment1`.`matches` (`idmatch`, `idp1`, `idp2`, `idt`, `idw`) VALUES ('7', '1', '8', '1', '0');
+
+
+INSERT INTO `assignment1`.`games` (`idgame`, `scorep1`, `scorep2`, `idm`, `idw`) VALUES ('4', '11', '5', '7', '1');
+INSERT INTO `assignment1`.`games` (`idgame`, `scorep1`, `scorep2`, `idm`, `idw`) VALUES ('5', '11', '4', '7', '1');
+INSERT INTO `assignment1`.`games` (`idgame`, `scorep1`, `scorep2`, `idm`, `idw`) VALUES ('6', '10', '3', '7', '0');
+
