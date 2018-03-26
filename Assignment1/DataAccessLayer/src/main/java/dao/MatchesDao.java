@@ -48,7 +48,7 @@ public class MatchesDao {
 				User p2 = UsersDao.findById(idp2);
 				Tournament t = TournamentsDao.findById(idt);
 				List<Game> g = GamesDao.getGamesbyMatch(idmatch);
-				int idw = rs.getInt("ïdw");
+				int idw = rs.getInt("idw");
 
 				Match m = new Match(idmatch, p1, p2, t, idw, g);
 				matches.add(m);

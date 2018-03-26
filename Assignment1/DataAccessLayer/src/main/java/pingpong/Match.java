@@ -10,6 +10,14 @@ public class Match {
 	private Tournament t;
 	private int idw;
 
+	public int getIdw() {
+		return idw;
+	}
+
+	public void setIdw(int idw) {
+		this.idw = idw;
+	}
+
 	private List<Game> games;
 
 	public Match() {

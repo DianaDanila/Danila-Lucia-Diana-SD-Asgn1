@@ -16,25 +16,20 @@ public class UpdatePlayer {
 		window.initModality(Modality.APPLICATION_MODAL);
 		window.setMinWidth(250);
 
-		// Name Label - constrains use (child, column, row)
 		Label userLabel = new Label("User:");
 		GridPane.setConstraints(userLabel, 0, 0);
-		
-		// Name Input
+
 		final TextField user = new TextField();
 		user.setPromptText("email");
 		GridPane.setConstraints(user, 1, 0);
 
-		// Password Label
 		Label passLabel = new Label("Password:");
 		GridPane.setConstraints(passLabel, 0, 1);
 
-		// Password Input
 		final TextField pass = new TextField();
 		pass.setPromptText("password");
 		GridPane.setConstraints(pass, 2, 0);
 
-		// Create two buttons
 		Button create = new Button("Update");
 
 		create.setOnAction(e -> {
@@ -45,7 +40,6 @@ public class UpdatePlayer {
 
 		VBox layout = new VBox(10);
 
-		// Add buttons
 		layout.getChildren().addAll(userLabel, user, passLabel, pass, create);
 		layout.setAlignment(Pos.CENTER);
 		Scene scene = new Scene(layout, 200, 300);

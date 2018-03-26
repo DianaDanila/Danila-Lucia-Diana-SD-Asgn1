@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 public class ConnectionFactory {
 	private static final Logger LOGGER = Logger.getLogger(ConnectionFactory.class.getName());
 	private static final String DRIVER = "com.mysql.jdbc.Driver";
-	private static final String DBURL = "jdbc:mysql://127.0.0.1:3306/assignment1?autoReconnect=true&useSSL=false";
+	private static final String DBURL = "jdbc:mysql://127.0.0.1:3306/asgn1?autoReconnect=true&useSSL=false";
 	private static final String USER = "root";
 	private static final String PASS = "root";
 

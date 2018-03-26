@@ -15,13 +15,6 @@ import javafx.stage.Stage;
 
 public class UI extends Application {
 
-	/*
-	 * @Override public void start(Stage s) throws Exception { // TODO
-	 * Auto-generated method stub //Stage stage = new Stage(); VBox box = new
-	 * VBox(); Scene scene = new Scene(box, 300, 300); s.setScene(scene); s.show();
-	 * }
-	 */
-
 	Stage window;
 
 	@Override
@@ -29,31 +22,25 @@ public class UI extends Application {
 		window = primaryStage;
 		window.setTitle("Ping Pong Tournaments");
 
-		// GridPane with 10px padding around edge
 		GridPane grid = new GridPane();
 		grid.setPadding(new Insets(10, 10, 10, 10));
 		grid.setVgap(8);
 		grid.setHgap(10);
 
-		// Name Label - constrains use (child, column, row)
 		Label nameLabel = new Label("Email:");
 		GridPane.setConstraints(nameLabel, 0, 0);
 
-		// Name Input
 		final TextField mail = new TextField();
 		mail.setPromptText("email");
 		GridPane.setConstraints(mail, 1, 0);
 
-		// Password Label
 		Label passLabel = new Label("Password:");
 		GridPane.setConstraints(passLabel, 0, 1);
 
-		// Password Input
 		final PasswordField pass = new PasswordField();
 		pass.setPromptText("password");
 		GridPane.setConstraints(pass, 1, 1);
 
-		// Login
 		Button loginButton = new Button("Log In");
 		Button createButton = new Button("Create Account");
 		GridPane.setConstraints(loginButton, 1, 2);
@@ -77,7 +64,6 @@ public class UI extends Application {
 			CreateA.display();
 		});
 
-		// Add everything to grid
 		grid.getChildren().addAll(nameLabel, mail, passLabel, pass, loginButton, createButton);
 		grid.setAlignment(Pos.CENTER);
 
@@ -95,7 +81,6 @@ public class UI extends Application {
 		 * TournamentBL x = new TournamentBL(); List<Tournament> to =
 		 * x.getTournaments(); for (Tournament ti: to) { System.out.println(ti); }
 		 */
-		System.out.println("De aici:");
 
 		/*
 		 * MatchBL y = new MatchBL(); List<Match> ma = y.getMatches(); for (Match mi :

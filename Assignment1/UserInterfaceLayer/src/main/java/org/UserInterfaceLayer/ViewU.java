@@ -1,7 +1,6 @@
 package org.UserInterfaceLayer;
 
 import javafx.stage.*;
-import pingpong.Game;
 import pingpong.User;
 import javafx.scene.*;
 import javafx.scene.layout.*;
@@ -33,27 +32,22 @@ public class ViewU {
 
 		TableView<User> table;
 
-		// id
 		TableColumn<User, Double> idColumn = new TableColumn<>("Id");
 		idColumn.setMinWidth(200);
 		idColumn.setCellValueFactory(new PropertyValueFactory<>("iduser"));
 
-		// p1
 		TableColumn<User, String> user = new TableColumn<>("user");
 		user.setMinWidth(200);
 		user.setCellValueFactory(new PropertyValueFactory<>("user"));
 
-		// p2
 		TableColumn<User, String> mail = new TableColumn<>("mail");
 		mail.setMinWidth(100);
 		mail.setCellValueFactory(new PropertyValueFactory<>("mail"));
 
-		// t
 		TableColumn<User, String> password = new TableColumn<>("password");
 		password.setMinWidth(100);
 		password.setCellValueFactory(new PropertyValueFactory<>("password"));
 
-		// w
 		TableColumn<User, Boolean> admin = new TableColumn<>("admin");
 		admin.setMinWidth(100);
 		admin.setCellValueFactory(new PropertyValueFactory<>("admin"));

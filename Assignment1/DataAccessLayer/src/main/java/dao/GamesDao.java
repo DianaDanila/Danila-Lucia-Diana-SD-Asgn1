@@ -18,15 +18,13 @@ import pingpong.Game;
 public class GamesDao {
 	protected final static Logger LOGGER = Logger.getLogger(TournamentsDao.class.getName());
 	private final static String findGamebyId = "SELECT * FROM games where idgames = ?";
-	// private final static String findGamebyIdPlayer = "SELECT * FROM games where
-	// idgame = ?";
 	private final static String findGamesbyMatch = "SELECT * FROM games where idm = ?";
 	private final static String updateScoreP1Statement = "UPDATE games " + "SET scorep1 = ? WHERE idgames = ?";
 	private final static String updateScoreP2Statement = "UPDATE games " + "SET scorep2 = ? WHERE idgames = ?";
 	private final static String updateWinnerStatement = "UPDATE games " + "SET idw = ? WHERE idgames = ?";
 	private static final String findWinnerbyPlayer = "SELECT * FROM games where idw = ?";
 	private final static String getGamesStatementString = "SELECT * FROM games";
-	
+
 	public static Game findById(int idg) {
 		Game toReturn = null;
 
@@ -95,7 +93,7 @@ public class GamesDao {
 			rs = getGamesStatement.executeQuery();
 
 			while (rs.next()) {
-				int id = rs.getInt("idgame");
+				int id = rs.getInt("idgames");
 				int p1 = rs.getInt("scorep1");
 				int p2 = rs.getInt("scorep2");
 				int idw = rs.getInt("idw");
@@ -191,10 +189,6 @@ public class GamesDao {
 	}
 
 	public static int getCurrentGame(int id) {
-		//int m = MatchesDao.findMatchbyP(id);
-		//int p1 = MatchesDao.getPlayerbyGameSide(m, 1);
-		//int p2 = MatchesDao.getPlayerbyGameSide(m, 2);
-
 		return 0;
 	}
 
@@ -275,7 +269,7 @@ public class GamesDao {
 		}
 
 	}
-	
+
 	public static ObservableList<Game> getGames() {
 		Connection dbConnection = ConnectionFactory.getConnection();
 		PreparedStatement getGamesStatement = null;

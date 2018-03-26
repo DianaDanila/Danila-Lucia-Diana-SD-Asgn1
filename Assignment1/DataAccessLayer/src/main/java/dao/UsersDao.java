@@ -38,11 +38,14 @@ public class UsersDao {
 			rs.next();
 
 			String name = rs.getString("user");
+			String mail = rs.getString("mail");
+			String pass = rs.getString("password");
 
 			user = new User();
 			user.setIduser(idu);
 			user.setUser(name);
-			System.out.println("user found with id: " + idu + " name " + name);
+			user.setMail(mail);
+			user.setPassword(pass);
 		} catch (SQLException e) {
 			LOGGER.log(Level.WARNING, "UsersDao:findById" + e.getMessage());
 		} finally {
@@ -83,7 +86,6 @@ public class UsersDao {
 				if (p.equals(pass)) {
 					user = new User(id, name, mailu, pass, a);
 					user.setUser(name);
-					System.out.println("user connected with mail: " + mailu + " name " + name);
 				} else {
 					System.out.println("invalid password");
 

@@ -40,7 +40,6 @@ public class TournamentsDao {
 			String status = rs.getString("status");
 			int idw = rs.getInt("winner");
 			toReturn = new Tournament(idt, name, status, idw);
-			System.out.println("tournament found with id: " + idt + " " + name + " " + status);
 
 		} catch (SQLException e) {
 			LOGGER.log(Level.WARNING, "TournamentsDao:findById " + e.getMessage());
