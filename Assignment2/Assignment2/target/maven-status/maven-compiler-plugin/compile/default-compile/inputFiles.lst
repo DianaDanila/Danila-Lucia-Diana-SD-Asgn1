@@ -1,0 +1,13 @@
+C:\Users\lucia\Downloads\sem 2\sd\Assignment2\Assignment2\src\main\java\dao\Dao.java
+C:\Users\lucia\Downloads\sem 2\sd\Assignment2\Assignment2\src\main\java\dao\TournamentDao.java
+C:\Users\lucia\Downloads\sem 2\sd\Assignment2\Assignment2\src\main\java\dao\factory\DaoFactory.java
+C:\Users\lucia\Downloads\sem 2\sd\Assignment2\Assignment2\src\main\java\model\pingpong\Match.java
+C:\Users\lucia\Downloads\sem 2\sd\Assignment2\Assignment2\src\main\java\UTCNSD\Assignment2\App.java
+C:\Users\lucia\Downloads\sem 2\sd\Assignment2\Assignment2\src\main\java\dao\factory\impl\JdbcDaoFactory.java
+C:\Users\lucia\Downloads\sem 2\sd\Assignment2\Assignment2\src\main\java\model\pingpong\Game.java
+C:\Users\lucia\Downloads\sem 2\sd\Assignment2\Assignment2\src\main\java\model\util\HibernateUtil.java
+C:\Users\lucia\Downloads\sem 2\sd\Assignment2\Assignment2\src\main\java\dao\factory\impl\HibernateDaoFactory.java
+C:\Users\lucia\Downloads\sem 2\sd\Assignment2\Assignment2\src\main\java\model\pingpong\User.java
+C:\Users\lucia\Downloads\sem 2\sd\Assignment2\Assignment2\src\main\java\dao\factory\impl\jdbc\JdbcTournamentDao.java
+C:\Users\lucia\Downloads\sem 2\sd\Assignment2\Assignment2\src\main\java\model\pingpong\Tournament.java
+C:\Users\lucia\Downloads\sem 2\sd\Assignment2\Assignment2\src\main\java\dao\factory\impl\hyb\HibernateTournamentDao.java

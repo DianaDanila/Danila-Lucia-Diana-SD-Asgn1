@@ -1,0 +1,126 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema assignment2
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema assignment2
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `assignment2` DEFAULT CHARACTER SET latin1 ;
+USE `assignment2` ;
+
+-- -----------------------------------------------------
+-- Table `assignment2`.`tournaments`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `assignment2`.`tournaments` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `fee` INT(11) NULL DEFAULT NULL,
+  `idwinner` INT(11) NULL DEFAULT NULL,
+  `name` VARCHAR(255) NULL DEFAULT NULL,
+  `status` VARCHAR(255) NULL DEFAULT NULL,
+  `type` VARCHAR(255) NULL DEFAULT NULL,
+  `winmoney` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 9
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `assignment2`.`users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `assignment2`.`users` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `accountbalance` INT(11) NULL DEFAULT NULL,
+  `admin` BIT(1) NULL DEFAULT NULL,
+  `name` VARCHAR(255) NULL DEFAULT NULL,
+  `password` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `assignment2`.`enrolments`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `assignment2`.`enrolments` (
+  `idtournament` INT(11) NOT NULL,
+  `iduser` INT(11) NOT NULL,
+  INDEX `FK_ojfyift2a4ej6ymnh6qhte5hg` (`iduser` ASC),
+  INDEX `FK_cijso43hkc4xuo194o7o49icw` (`idtournament` ASC),
+  CONSTRAINT `FK_cijso43hkc4xuo194o7o49icw`
+    FOREIGN KEY (`idtournament`)
+    REFERENCES `assignment2`.`tournaments` (`id`),
+  CONSTRAINT `FK_ojfyift2a4ej6ymnh6qhte5hg`
+    FOREIGN KEY (`iduser`)
+    REFERENCES `assignment2`.`users` (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `assignment2`.`matches`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `assignment2`.`matches` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `idw` INT(11) NULL DEFAULT NULL,
+  `player1_id` INT(11) NULL DEFAULT NULL,
+  `player2_id` INT(11) NULL DEFAULT NULL,
+  `tournament_id` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `FK_am1u0f9vffh11anag5266xrjd` (`player1_id` ASC),
+  INDEX `FK_f1isdi1jum3v822uy96oim15r` (`player2_id` ASC),
+  INDEX `FK_h7ce3e7e0qgr0pj2se8a5n6po` (`tournament_id` ASC),
+  CONSTRAINT `FK_am1u0f9vffh11anag5266xrjd`
+    FOREIGN KEY (`player1_id`)
+    REFERENCES `assignment2`.`users` (`id`),
+  CONSTRAINT `FK_f1isdi1jum3v822uy96oim15r`
+    FOREIGN KEY (`player2_id`)
+    REFERENCES `assignment2`.`users` (`id`),
+  CONSTRAINT `FK_h7ce3e7e0qgr0pj2se8a5n6po`
+    FOREIGN KEY (`tournament_id`)
+    REFERENCES `assignment2`.`tournaments` (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 2
+DEFAULT CHARACTER SET = latin1;
+
+
+-- -----------------------------------------------------
+-- Table `assignment2`.`games`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `assignment2`.`games` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `scoreP1` INT(11) NULL DEFAULT NULL,
+  `scoreP2` INT(11) NULL DEFAULT NULL,
+  `winner` INT(11) NULL DEFAULT NULL,
+  `match_id` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `FK_rtdgyqb58rlnr61knj970715g` (`match_id` ASC),
+  CONSTRAINT `FK_rtdgyqb58rlnr61knj970715g`
+    FOREIGN KEY (`match_id`)
+    REFERENCES `assignment2`.`matches` (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 2
+DEFAULT CHARACTER SET = latin1;
+
+INSERT INTO `assignment2`.`users` (`id`, `accountbalance`, `admin`, `name`, `password`) VALUES ('1', '1000', '1', 'Diana'', '123');
+INSERT INTO `assignment2`.`users` (`id`, `accountbalance`, `admin`, `name`, `password`) VALUES ('2', '90', '0', 'Radu', '123');
+INSERT INTO `assignment2`.`tournaments` (`id`, `fee`, `idwinner`, `name`, `status`, `type`, `winmoney`) VALUES ('1', '100', '0', 'International', 'Upcoming', 'paid', '0');
+INSERT INTO `assignment2`.`tournaments` (`id`, `fee`, `idwinner`, `name`, `status`, `type`, `winmoney`) VALUES ('2', '0', '0', 'World Cup', 'Upcoming', 'free', '0');
+INSERT INTO `assignment2`.`matches` (`id`, `idw`, `player1_id`, `player2_id`, `tournament_id`) VALUES ('1', '0', '1', '2', '2');
+INSERT INTO `assignment2`.`games` (`id`, `scoreP1`, `scoreP2`, `winner`, `match_id`) VALUES ('1', '9', '6', '0', '1');
+
+
+
+
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

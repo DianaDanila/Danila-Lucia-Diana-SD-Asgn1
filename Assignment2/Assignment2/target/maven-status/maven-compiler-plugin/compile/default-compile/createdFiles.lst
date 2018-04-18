@@ -1,0 +1,15 @@
+model\pingpong\Match.class
+dao\factory\DaoFactory$1.class
+model\pingpong\Tournament.class
+dao\factory\impl\HibernateDaoFactory.class
+dao\factory\impl\jdbc\JdbcTournamentDao.class
+dao\factory\impl\JdbcDaoFactory.class
+dao\factory\DaoFactory$Type.class
+model\pingpong\User.class
+dao\TournamentDao.class
+dao\Dao.class
+dao\factory\impl\hyb\HibernateTournamentDao.class
+model\util\HibernateUtil.class
+UTCNSD\Assignment2\App.class
+dao\factory\DaoFactory.class
+model\pingpong\Game.class
